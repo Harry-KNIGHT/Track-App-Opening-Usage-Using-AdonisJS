@@ -7,7 +7,10 @@
 |
 */
 
+
 import router from '@adonisjs/core/services/router'
+const AppOpeningsController = () => import('#controllers/app_openings_controller')
+
 
 router.get('/', async () => {
   return {
@@ -15,4 +18,4 @@ router.get('/', async () => {
   }
 })
 
-router.post('/app-opened', 'AppOpeningController.increment')
+router.post('app-opened', [AppOpeningsController, `increment`])
