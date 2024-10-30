@@ -14,3 +14,5 @@ router.get('/', async () => {
     hello: 'world',
   }
 })
+
+router.post('/app-opened', 'AppOpeningController.increment')
