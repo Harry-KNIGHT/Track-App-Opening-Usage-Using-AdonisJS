@@ -1,4 +1,4 @@
-import app from '@adonisjs/core/services/app'
+// import app from '@adonisjs/core/services/app'
 import { defineConfig } from '@adonisjs/lucid'
 
 const dbConfig = defineConfig({
