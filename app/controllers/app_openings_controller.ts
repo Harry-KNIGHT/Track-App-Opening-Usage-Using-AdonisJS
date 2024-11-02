@@ -1,6 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import { inject } from '@adonisjs/core'
-import { AppOpeningService } from '../app_opening_service.js'
+import { AppOpeningService } from '#services/app_opening_service'
 
 @inject()
 export default class AppOpeningsController {
@@ -18,17 +18,7 @@ export default class AppOpeningsController {
    * @Returns the number of visits to the app
    */
   public async count({ response }: HttpContext) {
-    try {
-      const count = await this.appOpeningService.count()
-      return response.status(200).send({ count })
-    } catch (error) {
-      if (error.code === 'E_ROW_NOT_FOUND') {
-        return { count: 0 }
-      }
-
-      return response.status(500).send({
-        message: 'Something went wrong',
-      })
-    }
+    const count = await this.appOpeningService.count()
+    return response.status(200).send({ count })
   }
 }
